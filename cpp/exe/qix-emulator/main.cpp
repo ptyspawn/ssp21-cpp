@@ -105,10 +105,14 @@ int read_frames(const std::vector<std::string>& ports)
     }
 
     try {
+        SerialSettings settings(ports[0]);
+        settings.baud = 115200;
+
+
         QIXFrameReader reader(
             std::make_shared<QIXPrinter>(),
             log4cpp::Logger(std::make_shared<log4cpp::ConsolePrettyPrinter>(), Module::id, "qix-reader", log4cpp::LogLevels(0xFF)),
-            SerialSettings(ports[0]));
+            settings);
 
         std::cout << "waiting for QIX frames" << std::endl;
         std::cout << "press <enter> to terminate" << std::endl;

@@ -15,8 +15,8 @@ QIXFrameWriter::QIXFrameWriter(const std::string& serial_device)
 {
     port.open(serial_device);
 
-    // 9600 bps
-    port.set_option(asio::serial_port_base::baud_rate(9600));
+    // 115200 bps
+    port.set_option(asio::serial_port_base::baud_rate(115200));
 
     // 8/N/1
     port.set_option(asio::serial_port_base::character_size(8));
